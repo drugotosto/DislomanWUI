@@ -31,6 +31,7 @@ $(document).ready(function() {
 
     $("#oeeComputationResponse").hide();
     $("#ingestionResponseJSON").hide();
+
     $("#orchestaSubmitData").click(function (e) {
         var formDataJSONObject = getFormData($("#orchestaFormData"));
         console.log(formDataJSONObject);
@@ -38,7 +39,8 @@ $(document).ready(function() {
         console.log("JSON data to send: "+formDataJSONString);
         $("#ingestionResponseJSON").slideDown();
         $.ajax({
-            url: "http://192.168.99.100:8080/greeting/",
+            url: "https://disloman/api/orchestra/greetings",
+            // url: "http://192.168.99.100:8080/api/orchestra/greetings/",
             type: 'POST',
             contentType: 'application/json; charset=UTF-8',
             data: formDataJSONString,
@@ -57,7 +59,6 @@ $(document).ready(function() {
     });
 
 
-
     $("#ssbRetriveData").click(function (e) {
         var messageElement= "<li id=\"\">" +
             "<a><span class=\"image\"><img src=\"../static/images/profile.jpg\" alt=\"img\"></span>" +
@@ -69,7 +70,8 @@ $(document).ready(function() {
             "</a>" +
             "</li>";
         $.ajax({
-            url: "http://192.168.99.100:8090/greetings/",
+            url: "https://disloman/api/ssb/greetings",
+            // url: "http://192.168.99.100:8080/api/ssb/greetings/",
             type: 'GET',
             success: function (data) {
                 console.log("DATA RETRIEVED SUCCESSFULLY!");
